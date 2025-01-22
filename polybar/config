@@ -1,0 +1,87 @@
+[colors]
+background = #90002244
+foreground = #89CFF0
+primary = ${xrdb:color13:#222}
+secondary = ${xrdb:color4:#222}
+alert = ${xrdb:color5:#222}
+
+underline =  	#FFD700
+
+[bar/mybar]
+width = 60%
+height = 45
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = JetBrains Mono Nerd Font:pixelsize=19;2
+fixed-center = true
+
+padding-left = 2
+padding-right = 2
+module-margin = 1
+
+override-redirect = true 
+offset-y = 8
+offset-x = 650
+
+radius = 12.0
+
+modules-right = network-info sep  time
+modules-center = 
+modules-left = symbol sep i3 sep 
+
+[module/symbol]
+type = custom/text
+content = 󰣇
+label = %content%
+
+[module/sep]
+type = custom/text
+content = |
+label = %content%
+
+[module/network-info]
+type = custom/script
+exec = sudo ~/.config/polybar/scripts/network_info.sh
+interval = 1
+label = %output%
+
+[module/i3]
+type = internal/i3
+ws-icon-0 = 1;%{T0}%{T-}
+ws-icon-1 = 2;%{T4}%{T-}
+ws-icon-2 = 3;%{T0}%{T-}
+ws-icon-3 = 4;%{T2}%{T-}
+ws-icon-4 = 5;%{T0}%{T-}
+ws-icon-5 = 6;%{T4}%{T-}
+ws-icon-6 = 7;%{T5}%{T-}
+ws-icon-7 = 8;%{T0}%{T-}
+ws-icon-8 = 9;%{T0}%{T-}
+ws-icon-9 = 10;%{T4}%{T-}
+index-sort = true
+
+label-focused = %icon%
+label-focused-foreground = ${colors.underline}
+label-focused-padding = 1
+
+label-visible = %icon%
+label-visible-padding = 1
+label-visible-background = ${colors.background-alt}
+label-visible-foreground = ${colors.foreground-alt}
+
+; Urgent.
+label-urgent = %icon%
+label-urgent-padding = 1
+label-urgent-background = ${colors.orange}
+label-urgent-foreground = ${colors.foreground}
+; Empty.
+label-unfocused = "%icon%"
+label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-background= ${colors.background-alt}
+
+
+[module/time]
+type = internal/date
+interval = 1.0
+date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup &:}%{T5}%{T-} %H:%M%{A}
