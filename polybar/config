@@ -26,9 +26,11 @@ offset-x = 650
 
 radius = 12.0
 
-modules-right = network-info sep  time
+modules-right = sep time sep arrow
 modules-center = 
 modules-left = symbol sep i3 sep 
+
+
 
 [module/symbol]
 type = custom/text
@@ -38,6 +40,11 @@ label = %content%
 [module/sep]
 type = custom/text
 content = |
+label = %content%
+
+[module/sep1]
+type = custom/text
+content = " "
 label = %content%
 
 [module/network-info]
@@ -85,3 +92,46 @@ label-unfocused-background= ${colors.background-alt}
 type = internal/date
 interval = 1.0
 date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup &:}%{T5}%{T-} %H:%M%{A}
+
+[bar/tray]
+monitor-strict = false
+
+width = 20
+height = 20  # Уменьшаем высоту
+offset-x = 82%  # Позиция по оси X, регулируйте в зависимости от нужд
+offset-y = 2.8%  # Увеличиваем значение для отступа сверху, чтобы панель не перекрывала окна
+
+override-redirect = true
+
+fixed-center = true
+
+background = #90002244
+radius = 8
+line-size = 0
+line-color = #f00
+
+padding-left = 0
+padding-right = 5
+module-margin-left = 0
+module-margin-right = 0
+
+modules-right = sep1
+tray-position = right
+tray-detached = true
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 1
+tray-maxsize = 20
+tray-scale = 2.0
+tray-background = ${colors.background}
+
+
+[module/arrow]
+
+type = custom/script
+
+exec = echo ""
+
+click-left = bash $HOME/.config/polybar/tinybar.sh
+
+click-right = bash $HOME/.config/polybar/killbar.sh

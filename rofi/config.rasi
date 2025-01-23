@@ -4,6 +4,7 @@ configuration {
   modes: "window,drun,run,ssh";
   font: "JetBrainsMono NF 18";
   drun-display-format: "{name}";
+  modi: "search:~/documents/code/scripts/rofi-finder.sh";
 }
 
 * {

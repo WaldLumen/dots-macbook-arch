@@ -3,6 +3,7 @@ set $mod Mod4
 exec_always --no-startup-id easyeffects --gapplication-service
 exec_always --no-startup-id xkbcomp ~/.xkb/custom $DISPLAY
 exec_always --no-startup-id volnoti
+exec_always --no-startup-id wal -R
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 floating_modifier $mod
 exec_always --no-startup-id feh --bg-scale ~/.config/Wallpapers/blue/1342336.png 
@@ -16,6 +17,8 @@ exec_always --no-startup-id sh .config/polybar/launch.sh
 
 # Apps
 bindsym $mod+e exec emacs
+bindsym Mod1+m exec ~/documents/code/scripts/dunst-lookup.sh
+bindsym Mod1+d exec rofi -show search  
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec --no-startup-id rofi -show drun
@@ -44,7 +47,8 @@ volnoti-show $(($(brightnessctl get) * 100 / $(brightnessctl max))) --icon=~/.co
 bindsym $mod+q kill
 bindsym $mod+f fullscreen toggle
 
-
+bindsym $mod+Tab workspace next 
+bindsym Mod1+Tab workspace prev 
 
 # change focus
 bindsym $mod+j focus left
