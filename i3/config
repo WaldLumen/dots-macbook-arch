@@ -5,8 +5,15 @@ exec_always --no-startup-id xkbcomp ~/.xkb/custom $DISPLAY
 exec_always --no-startup-id volnoti
 exec_always --no-startup-id wal -R
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc
+exec_always --no-startup-id /opt/activitywatch/aw-server/aw-server
+exec_always --no-startup-id /opt/activitywatch/aw-watcher-window/aw-watcher-window
+
+exec_always --no-startup-id /opt/activitywatch/aw-watcher-afk/aw-watcher-afk
+
 floating_modifier $mod
+
 exec_always --no-startup-id feh --bg-scale ~/.config/Wallpapers/blue/1342336.png 
+
 
 
 # L&F
@@ -15,7 +22,7 @@ exec_always --no-startup-id feh --bg-fill $HOME/.config/Wallpapers/purple1.jpg
 exec_always --no-startup-id sh .config/polybar/launch.sh
 
 
-# Apps
+# App
 bindsym $mod+e exec emacs
 bindsym Mod1+m exec ~/documents/code/scripts/dunst-lookup.sh
 bindsym Mod1+d exec rofi -show search  
